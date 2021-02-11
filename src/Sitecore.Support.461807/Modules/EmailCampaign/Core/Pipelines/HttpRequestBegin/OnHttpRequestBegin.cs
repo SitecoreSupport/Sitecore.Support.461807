@@ -60,6 +60,8 @@
             catch (Exception ex)
             {
                 _logger.LogError(ex);
+                if (ex is Sitecore.XConnect.XdbCollectionUnavailableException && ExmContext.IsRenderRequest)
+                    throw;
             }
         }
     }
